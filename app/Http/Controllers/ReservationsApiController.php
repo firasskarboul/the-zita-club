@@ -29,6 +29,10 @@ class ReservationsApiController extends Controller
         ]);
     }
 
+    public function show($reservationCode) {
+        return Reservation::where('reservationCode', $reservationCode)->get();
+    }
+
     public function update(Reservation $reservation) {
         request()->validate([
             'fullName' => 'required',
