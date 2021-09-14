@@ -18,6 +18,7 @@ class ReservationsApiController extends Controller
             'phoneNumber' => 'required',
             'broughtBy' => 'required',
             'payment' => 'required',
+            'reservationCode' => 'required'
         ]);
     
         return Reservation::create([
@@ -26,6 +27,7 @@ class ReservationsApiController extends Controller
             'phoneNumber' => request('phoneNumber'),
             'broughtBy' => request('broughtBy'),
             'payment' => request('payment'),
+            'reservationCode' => request('reservationCode')
         ]);
     }
 

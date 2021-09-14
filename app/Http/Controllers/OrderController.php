@@ -23,7 +23,7 @@ class OrderController extends Controller
             'orderCode' => request('orderCode'),
             'user_id' => request('user_id'),
             'reservation_id' => request('reservation_id'),
-            // 'attendance' => false
+            'attendance' => request('attendance')
         ]);
     }
 

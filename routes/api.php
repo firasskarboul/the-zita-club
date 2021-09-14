@@ -31,24 +31,36 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     // PROTECTED RESERVATIONS
 
-    Route::get('/reservations', [ReservationsApiController::class, 'index']);
-    Route::get('/reservations/{reservationCode}', [ReservationsApiController::class, 'show']);
-    Route::put('/reservations/{reservation}', [ReservationsApiController::class, 'update']);
-    Route::delete('/reservations/{reservation}', [ReservationsApiController::class, 'destroy']);
+    // Route::get('/reservations', [ReservationsApiController::class, 'index']);
+    // Route::get('/reservations/{reservationCode}', [ReservationsApiController::class, 'show']);
+    // Route::put('/reservations/{reservation}', [ReservationsApiController::class, 'update']);
+    // Route::delete('/reservations/{reservation}', [ReservationsApiController::class, 'destroy']);
 
     // PROTECTED ORDERS
 
-    Route::get('/orders', [OrderController::class, 'index']);
-    Route::post('/orders', [OrderController::class, 'store']);
-    Route::get('/orders/{orderCode}', [OrderController::class, 'show']);
-    Route::put('/orders/{order}', [OrderController::class, 'update']);
-    Route::delete('/orders/{order}', [OrderController::class, 'destroy']);
+    // Route::get('/orders', [OrderController::class, 'index']);
+    // Route::post('/orders', [OrderController::class, 'store']);
+    // Route::get('/orders/{orderCode}', [OrderController::class, 'show']);
+    // Route::put('/orders/{order}', [OrderController::class, 'update']);
+    // Route::delete('/orders/{order}', [OrderController::class, 'destroy']);
 
 });
 
 // PUBLIC RESERVATIONS
 
 Route::post('/reservations', [ReservationsApiController::class, 'store']);
+Route::get('/reservations', [ReservationsApiController::class, 'index']);
+Route::get('/reservations/{reservationCode}', [ReservationsApiController::class, 'show']);
+Route::put('/reservations/{reservation}', [ReservationsApiController::class, 'update']);
+Route::delete('/reservations/{reservation}', [ReservationsApiController::class, 'destroy']);
+
+// PUBLIC ORDERS
+
+Route::get('/orders', [OrderController::class, 'index']);
+Route::post('/orders', [OrderController::class, 'store']);
+Route::get('/orders/{orderCode}', [OrderController::class, 'show']);
+Route::put('/orders/{order}', [OrderController::class, 'update']);
+Route::delete('/orders/{order}', [OrderController::class, 'destroy']);
 
 // PUBLIC USERS
 
