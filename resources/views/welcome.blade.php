@@ -36,6 +36,8 @@
                                 <div class="mt-4 text-gray-600 dark:text-gray-400 text-lg">
                                     THIS IS THE BACKEND OF THE ZITA CLUB RESERVATION PLATFORM
                                 </div>
+
+                                {!! QrCode::size(250)->generate('HELLO IT ME'); !!}
                             </div>
                         </div>
                     </div>
