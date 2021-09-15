@@ -8,6 +8,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use App\Models\Reservation;
 use App\Models\Order;
+use Carbon\Carbon;
 
 class OrderConfirmation extends Mailable
 {
@@ -34,6 +35,7 @@ class OrderConfirmation extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.reservation', ['order' => $this->order, 'reservation' => $this->reservation]);
+        $qrPath = '../public/assets/QR' . Carbon::now()->timestamp . '.png';
+        return $this->markdown('emails.reservation', ['order' => $this->order, 'reservation' => $this->reservation, 'QRpath' => $qrPath]);
     }
 }

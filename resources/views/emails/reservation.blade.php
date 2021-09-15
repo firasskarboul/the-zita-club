@@ -6,8 +6,9 @@ Hi <b>{{ $reservation->fullName }}</b>, <br/>
 Votre ticket a été payée avec succée. <br/>
 
 CODE QR :
-
-# {{ $order->orderCode }}
+{{ QrCode::size(250)->format('png')->generate($order->orderCode, $QRpath); }}
+![Image_Alter_Text](http://thezitaclub.xyz/assets/QR1631720401.png)
+{{-- ![Image_Alter_Text]($QRpath) --}}
 
 Veuillez montrer cette <b>Ticket</b> avec le <b>CODE QR</b> à l'entrée. <br/>
 Vous trouverez tous nos actualités sur Instagram:
