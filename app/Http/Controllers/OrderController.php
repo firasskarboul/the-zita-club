@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Mail\OrderConfirmation;
 use Illuminate\Http\Request;
+use App\Models\Reservation;
+use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
@@ -19,12 +22,18 @@ class OrderController extends Controller
             // 'attendance' => 'required',
         ]);
     
-        return Order::create([
+        $order = Order::create([
             'orderCode' => request('orderCode'),
             'user_id' => request('user_id'),
             'reservation_id' => request('reservation_id'),
             'attendance' => request('attendance')
         ]);
+
+        $reservation = Reservation::where('id', request('reservation_id'))->get();
+
+        Mail::to($reservation[0]->email)->send(new OrderConfirmation($order, $reservation[0]));
+
+        return $order;
     }
 
     public function show($orderCode) {
