@@ -12,6 +12,7 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        'http://thezitaclub.xyz/api/reservations'
+        'http://thezitaclub.xyz/api/reservations',
+        'http://127.0.0.1:8000/api/reservations'
     ];
 }

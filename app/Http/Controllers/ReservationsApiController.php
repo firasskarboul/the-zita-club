@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Reservation;
 use Illuminate\Http\Request;
+use App\Mail\sendQrCode;
+use Illuminate\Support\Facades\Mail;
 
 class ReservationsApiController extends Controller
 {
@@ -21,7 +23,7 @@ class ReservationsApiController extends Controller
             'reservationCode' => 'required'
         ]);
     
-        return Reservation::create([
+        $user = Reservation::create([
             'fullName' => request('fullName'),
             'email' => request('email'),
             'phoneNumber' => request('phoneNumber'),
@@ -29,6 +31,10 @@ class ReservationsApiController extends Controller
             'payment' => request('payment'),
             'reservationCode' => request('reservationCode')
         ]);
+
+        Mail::to(request('email'))->send(new sendQrCode($user));
+
+        return $user;
     }
 
     public function show($reservationCode) {
