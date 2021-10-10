@@ -35,7 +35,14 @@ class OrderConfirmation extends Mailable
      */
     public function build()
     {
-        $qrPath = '../public/assets/QR/' . Carbon::now()->timestamp . '.png';
-        return $this->markdown('emails.reservation', ['order' => $this->order, 'reservation' => $this->reservation, 'QRpath' => $qrPath]);
+        $path= 'assets/QR' . Carbon::now()->timestamp . '.png';
+        $qrPath = '../public/' . $path;
+        $qrImagePath = 'https://thezitaclub.xyz/' . $path;
+        return $this->markdown('emails.reservation',[
+            'order' => $this->order,
+            'reservation' => $this->reservation,
+            'QRpath' => $qrPath,
+            'qrImagePath' => $qrImagePath
+        ]);
     }
 }

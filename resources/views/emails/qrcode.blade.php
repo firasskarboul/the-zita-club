@@ -12,7 +12,7 @@ Votre code de réservation est :
 Veuillez montrer ce code lors du paiement. <br/>
 Vous trouverez tous nos actualités sur Instagram:
 
-@component('mail::button', ['url' => 'https://www.instagram.com/firass_karboul/'])
+@component('mail::button', ['url' => 'https://www.instagram.com/the_zita_club/'])
 INSTAGRAM
 @endcomponent
 
